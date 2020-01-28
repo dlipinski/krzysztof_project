@@ -1,5 +1,6 @@
 # https://czytac.com/java-book/book/Rok_1984_George_Orwell
 # http://nkjp.pl/poliqarp/help/plse2.html
+# http://mozart.ipipan.waw.pl/~kkrasnowska/NBP/notebooks/Analiza%20i%20ujednoznacznianie%20morfosk%C5%82adniowe.html
 import morfeusz2
 
 
