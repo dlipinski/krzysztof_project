@@ -20,7 +20,7 @@ for index, department_id in enumerate(departments_ids[1]):
     soup = BeautifulSoup(r.content, 'html.parser')
 
     # BeatifulSoup4 nie pracuje najlepiej z  baza.ue.poznan.pl (przykład w examples/parsed_index.html)
-    # Więc zastosowano parę 'tricków':
+    # Więc zastosowano parę 'tricków' - usuwając niepotrzebne elementy HTML (element.decompose()):
     soup.select_one('html').decompose()
     soup.select_one('select').decompose()
     # Wybierz nazwy pracowników
