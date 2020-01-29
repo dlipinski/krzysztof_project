@@ -15,7 +15,7 @@ departments_ids_len = len(departments_ids)
 print(f'Pobrano {departments_ids_len} ID jednostek.')
 
 # Dla każdej jednostki zbierz numery pracowników
-for index, department_id in enumerate(departments_ids[1]):
+for index, department_id in enumerate(departments_ids):
     r = requests.post('http://baza.ue.poznan.pl/index.php', data={ 'nazwisko': '', 'imie': '', 'departmentId': department_id, 'B1': 'Szukaj' })
     soup = BeautifulSoup(r.content, 'html.parser')
 
