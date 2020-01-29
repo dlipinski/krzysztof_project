@@ -40,7 +40,7 @@ G. Reprezentacja danych:
 H. Poprawność danych:
     Po przeprowadzeniu sprawdzenia poprawnośći danych w programie dowiemy się, że poprawność danych reprezentuje się na poziomie 99.7%.
 
-H. Informacje dodatkowe:
+I. Informacje dodatkowe:
     Biblioteka BeautifulSoup, mimo bycia najpopularniejszym parserem HTML dla Python3, nie podołała witrynie baza.ue.poznan.pl.
     Z tego powodu 'powycinano' troche niepotrzebną treść strony, celem prawidłowego działania programu.
     Przykładowe pliki:
