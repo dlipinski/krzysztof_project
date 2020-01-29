@@ -19,7 +19,7 @@ for index, department_id in enumerate(departments_ids[1]):
     r = requests.post('http://baza.ue.poznan.pl/index.php', data={ 'nazwisko': '', 'imie': '', 'departmentId': department_id, 'B1': 'Szukaj' })
     soup = BeautifulSoup(r.content, 'html.parser')
 
-    # BeatifulSoup4 nie pracuje najlepiej z  baza.ue.poznan.pl (przykład w examples/parsed_index.html)
+    # BeatifulSoup4 nie pracuje najlepiej z  baza.ue.poznan.pl (przykład w folderze examples)
     # Więc zastosowano parę 'tricków' - usuwając niepotrzebne elementy HTML (element.decompose()):
     soup.select_one('html').decompose()
     soup.select_one('select').decompose()
