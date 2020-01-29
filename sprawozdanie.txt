@@ -1,0 +1,50 @@
+A. Treść zadania:
+    2 Odwrotna książka telefoniczna UE Poznań
+    Na stronie uczelni można znaleźć numery telefonów do pracowników.
+    Nie ma niestety możliwości znalezienie pracownika, który do nas dzwonił, jeśli znamy tylko czterocyfrowy numer wewnętrzny.
+    Zadanie polega na utworzeniu odwrotnej książki telefonicznej, tj. mapowania nr tel. – pracownik. Dane można znaleźć na stronie http://baza.ue.poznan.pl/.
+    Jest to źródło typu deep web, zatem najpierw należy odpytać o wszystkie możliwe strony (automatycznie) i wyciągnąć numery telefonów (regex lub xpath).
+    Zwrócić uwagę, że niektóre osoby nie mają numerów, niektóre mają po kilka, a jeden numer może być wspólny dla kilku osób.
+
+B. Oprogramowanie niezbędne do uruchomienia:
+    - Python3.6+
+    - pip3
+
+C. Biblioteki użyte:
+    - requests
+    - json  
+    - BeautifulSoup (zewnętrzna)
+
+D. Przed uruchomieniem:
+    - zainstaluj bibliotekę BeautifulSoup ('pip3 install beautifulsoup4')
+
+E. Uruchomienie:
+    W lokalizacji projektu wykonaj z poziomu lini poleceń 'python3 scrap_numbers.py'
+
+F. Opis działania programu:
+    1) Ściagnięcie ze strony id-ków wszystkich jednostek
+    2) dla każdej jednostki:
+        a) Ściągnij numery wszystkich pracowników i uzupełnij globalny słownik 'empoyees_numbers'
+    3) [Opcjonalne] Dla każdego pracownika sprawdź poprawność numeru:
+        a) Wyszukaj pracownika po imieniu i nazwisku
+        b) Sprawdź, czy zebrane dla danego pracownika numery pojawiają się na stronie
+    4) Zapisz dane do 2 plików:
+        a) data/data.json
+        b) data/data.js - na potrzeby wizualizacji danych, zapisanie danych jako zmienną JavaScript
+    5) Koniec działania
+
+G. Reprezentacja danych:
+    Po wykonaniu programu i zapisie danych do plików, można uruchomić w przeglądarce plik 'numbers.html'.
+    Strona pozwala nam przeszukiwać dane po numerze (lub jego fragmencie).
+
+H. Poprawność danych:
+    Po przeprowadzeniu sprawdzenia poprawnośći danych w programie dowiemy się, że poprawność danych reprezentuje się na poziomie 99.7%.
+
+H. Informacje dodatkowe:
+    Biblioteka BeautifulSoup, mimo bycia najpopularniejszym parserem HTML dla Python3, nie podołała witrynie baza.ue.poznan.pl.
+    Z tego powodu 'powycinano' troche niepotrzebną treść strony, celem prawidłowego działania programu.
+    Przykładowe pliki:
+        a) examples/raw.html - plik zawierajacy dokładną zawartość strony
+        b) examples/parsed.html - plik zawierajacy zawartość sparsowaną przez BeautifulSoup
+           (warto zwrócić uwage że tag </html> kończy się w połowie strony)
+        c) examples/tricked.html - plik zawierający zawartość sparsowana i 'pociętą' na potrzeby działania programu.

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='data/data.js'></script>
+    <style>
+        html, body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        table td, input, button{
+            border: 1px solid black;
+            padding: 5px;
+        }
+        b {
+            color: red
+        }
+    </style>
+</head>
+<body>
+    <h1>Wyszukiwarka pracowników po numerze telefonu</h1>
+    <input id='number_input' placeholder='Wpisz numer'>
+    <button id='search'>Szukaj</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Numer</th>
+                <th>Pracownik</th>
+            </tr>
+        </thead>
+        <tbody id='employees'>
+
+        </tbody>
+    </table>
+    <script>
+        let table = document.querySelector('#employees');
+        let employees = Object.keys(data);
+        employees.forEach(employee => {
+            let numbers = data[employee].join(', ').replace(/ /g,'');
+            table.innerHTML += `<tr><td>${numbers}</td><td>${employee}</td></tr>`;
+        });
+        let input = document.querySelector('#number_input');
+        let button = document.querySelector('#search');
+        button.addEventListener('click', () => {
+            table.innerHTML = '';
+            let searchPhrase = input.value;
+            if (searchPhrase.length > 0) {
+                employees.forEach(employee => {
+                    let numbers = data[employee].join(', ').replace(/ /g,'');
+                    if (numbers.includes(searchPhrase)) {
+                        table.innerHTML += `<tr><td>${numbers.replace(searchPhrase,`<b>${searchPhrase}</b>`)}</td><td>${employee}</td></tr>`;
+                    }
+                });
+            } else {
+                employees.forEach(employee => {
+                    let numbers = data[employee].join(', ').replace(/ /g,'');
+                    table.innerHTML += `<tr><td>${numbers}</td><td>${employee}</td></tr>`;
+                });
+            }
+          
+        });
+    </script>
+</body>
+</html>
