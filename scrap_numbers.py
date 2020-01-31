@@ -56,7 +56,7 @@ if input('Wpisz "tak" aby sprawdzić poprawność numerów (może trwać kilka m
     success_numbers = 0
     fail_numbers = 0
     for index, employee in enumerate(empoyees_numbers):
-        name_parts = employee.replace(' prof. UEP', '').split()
+        name_parts = employee.replace(', prof. UEP', '').split()
         print(f'{(index+1):03d}/{empoyees_numbers_len:03d} | S{success_numbers} F{fail_numbers} | Sprawdzanie poprawnosci numerów pracownika {name_parts[-1]} {name_parts[-2]}')
         r = requests.post('http://baza.ue.poznan.pl/index.php', data={ 'nazwisko': name_parts[-1], 'imie': name_parts[-2], 'departmentId': '', 'B1': 'Szukaj' })
         content = r.content
